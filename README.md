@@ -5,5 +5,6 @@ drawflow suffer memory leak in Vue2
 ```
 npm install
 npm run serve
-npx memlab run --scenario .memlab/drawflow.memlab.js
+npx memlab run --scenario .memlab/drawflow.memlab_clear.js
+npx memlab run --scenario .memlab/drawflow.memlab_removeNodeId.js
 ```

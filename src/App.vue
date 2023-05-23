@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <button id="create" @click="create">Create</button>
+    <button id="removeNodeId" @click="removeNode">RemoveNodes</button>
     <button id="clear" @click="clear">Clear</button>
     <button @click="log">Show Vue instances</button>
     <div id="drawflow"></div>
@@ -9,7 +10,7 @@
 
 <script>
 /*eslint-disable */
-import Drawflow from 'drawflow'
+import Drawflow from './drawflow'
 import styleDrawflow from 'drawflow/dist/drawflow.min.css'
 import HelloWorld from './components/HelloWorld.vue'
 import Vue from 'vue'
@@ -22,8 +23,8 @@ export default {
   },
   data() {
     return {
-      
       exportValue: null,
+      nodeIds: []
     }
   },
   mounted() {
@@ -42,12 +43,19 @@ export default {
       this.$df.import(this.exportValue);
     },
     create() {
-      for (let index = 0; index < 100; index++) {
-        this.$df.addNode('HelloWorld', 0, 1, 150, 300, 'HelloWorld', {select_type: "1"}, 'HelloWorld', 'vue');
+      for (let index = 0; index < 1000; index++) {
+        const nodeId = this.$df.addNode('HelloWorld', 0, 1, 150, 300, 'HelloWorld', {select_type: "1"}, 'HelloWorld', 'vue');
+        this.nodeIds.push(nodeId)
       }
     },
     clear() {
       this.$df.clear()
+    },
+    removeNode() {
+      this.nodeIds.forEach(nodeId => {
+        this.$df.removeNodeId(`node-${nodeId}`)
+      })
+      this.nodeIds = []
     },
     log() {
       console.log(window.__VUE_HOT_MAP__)
