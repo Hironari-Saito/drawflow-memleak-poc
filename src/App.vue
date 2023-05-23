@@ -10,7 +10,8 @@
 
 <script>
 /*eslint-disable */
-import Drawflow from './drawflow'
+// import Drawflow from 'drawflow'
+import Drawflow from './drawflow' // Fixed code
 import styleDrawflow from 'drawflow/dist/drawflow.min.css'
 import HelloWorld from './components/HelloWorld.vue'
 import Vue from 'vue'
